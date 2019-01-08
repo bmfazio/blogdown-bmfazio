@@ -1,31 +1,18 @@
-+++
+---
 title = "About"
 date = "2014-04-09"
 sidemenu = "true"
-description = "About me and this site"
-+++
+description = ""
+---
 
-Hugo is a static site engine written in Go.
+## About me
 
+Hi!
 
-It makes use of a variety of open source projects including:
+My name is Boris.
 
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
+I studied biology in college but statistics caught my attention along the way. Most of the time I'm helping other researchers analyze their data.
 
-Learn more and contribute on [GitHub](https://github.com/spf13).
+## About this site
 
-## Setup
-
-Some fun facts about [Hugo](http://gohugo.io/):
-
-* Built in [Go](http://golang.org/)
-* Loosely inspired by [Jekyll](http://jekyllrb.com/)
-* Primarily developed by [spf13](http://spf13.com/) on the train while commuting to and from Manhattan.
-* Coded in [Vim](http://vim.org) using [spf13-vim](http://vim.spf13.com/)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/spf13/hugo/issues/new) or [ask me on Twitter](https://twitter.com/spf13).
-
-Thanks for reading!
+My main motivation for setting up a blog is to document my progress and sporadically publish personal musings. Even if nobody ever sees them, I feel more compelled to write here than I would be on some notebook which will never leave my room. Kind of like sending a message in a bottle, I suppose.
