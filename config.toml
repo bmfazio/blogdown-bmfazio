@@ -2,9 +2,9 @@ baseurl = "https://bmfazio.netlify.com/"
 languageCode = "en-us"
 title = "Boris Fazio"
 theme = "blackburn"
-author = "Yoshiharu Yamashita"
-copyright = "&copy; I have no clue about my rights yet."
-canonifyurls = true
+author = "Yoshiharu Yamashita "
+copyright = "&copy; I have no clue what my rights are yet."
+canonifyurls = false
 paginate = 10
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
@@ -14,8 +14,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params]
   # Shown in the home page
-  subtitle = "A Hugo Theme"
-  brand = "Blackburn"
+  subtitle = "Proto-statistician / Knowledge-hungry slime mold"
+  brand = "<>"
   #googleAnalytics = "Your Google Analytics tracking ID"
   #disqus = "Your Disqus shortname"
   # CSS name for highlight.js
@@ -42,11 +42,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     weight = 3
     identifier = "about"
     url = "/about/"
-  [[menu.main]]
-    name = "Contact"
-    pre = "<i class='fa fa-phone fa-fw'></i>"
-    weight = 4
-    url = "/contact/"
 
 [social]
   # Link your social networking accouns to the side menu
