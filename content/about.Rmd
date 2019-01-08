@@ -12,8 +12,12 @@ Hi!
 
 My name is Boris.
 
-I studied biology in college but statistics caught my attention along the way. Most of the time I'm helping other researchers analyze their data.
+I studied biology in college but statistics caught my attention along the way. Most of the time I'm helping other researchers analyze their data or reading about things that will help me help others more efficiently.
+
+In my free time I create generative art using Processing. Hopefully I'll have something nice to share here soon!
 
 ## About this site
 
-My main motivation for setting up a blog is to document my progress and sporadically publish personal musings. Even if nobody ever sees them, I feel more compelled to write here than I would be on some notebook which will never leave my room. Kind of like sending a message in a bottle, I suppose.
+My main motivation for setting up a blog is to document my progress and sporadically publish personal musings. Even if nobody ever sees them, I feel more compelled to write here than I would be on some notebook which will never leave my room.
+
+Kind of like sending a message in a bottle, I suppose. :)
