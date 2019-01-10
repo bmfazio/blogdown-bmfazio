@@ -1,20 +1,14 @@
 ---
 title: "Hello R Markdown"
-author: "Frida Gomam"
-date: 2015-07-23T21:13:14-05:00
-categories: ["R"]
-tags: ["R Markdown", "plot", "regression"]
 ---
 
 ## About me
 
-Hi!
-
-My name is Boris.
+Hi! My name is Boris.
 
 I studied biology in college but statistics caught my attention along the way. Most of the time I'm helping other researchers analyze their data or reading about things that will help me help others more efficiently.
 
-In my free time I create generative art using Processing. Hopefully I'll have something nice to share here soon!
+In my free time I have started to create generative art. Hopefully I'll have something nice to share here soon!
 
 ## About this site
 

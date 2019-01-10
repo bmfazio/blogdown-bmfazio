@@ -1,4 +1,4 @@
-baseurl = "https://bmfazio.netlify.com/"
+baseurl = "https://bmfazio.github.io/"
 languageCode = "en-us"
 title = "Boris Fazio"
 theme = "blackburn"
@@ -7,6 +7,7 @@ copyright = "&copy; I have no clue what my rights are yet."
 canonifyurls = false
 paginate = 10
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+publishDir = "../bmfazio.github.io"
 
 [indexes]
   tag = "tags"
