@@ -21,4 +21,6 @@ Anyway, then came the very crucial issue of picking a theme. I probably spent mo
 
 Thankfully, [this article](https://forestry.io/blog/hugo-vs-jekyll-benchmark/) was one of the first search results, and it made a fairly compelling case for Hugo over Jekyll.
 
-![](https://forestry.io/uploads/2018/01/Hugo-vs-jekyll-basic-test-10k-pages-1.png)
+```{r}
+knitr::include_graphics("/post/2019-01-10-2019-is-online_files/Hugo-vs-jekyll-basic-test-10k-pages-1.png")
+```
