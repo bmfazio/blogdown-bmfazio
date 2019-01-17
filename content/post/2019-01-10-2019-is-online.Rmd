@@ -19,8 +19,36 @@ As I didn't know of any other alternatives, I went with that. The [introductory 
 
 Anyway, then came the very crucial issue of picking a theme. I probably spent more time on that than I did on the tutorial. I'm not entirely sure how, but at some point I arrived at [Forestry.io](https://forestry.io/) and saw that there was another choice called Hugo. That rang some bells, as I remembered seeing it mentioned on Twitter, probably by some of the several R users I follow due to the [blogdown](https://bookdown.org/yihui/blogdown/) package. And just like that, the seed of doubt was sown in me, so now I had to do additional research.
 
-Thankfully, [this article](https://forestry.io/blog/hugo-vs-jekyll-benchmark/) was one of the first search results, and it made a fairly compelling case for Hugo over Jekyll.
+Thankfully, [this article](https://forestry.io/blog/hugo-vs-jekyll-benchmark/) was one of the first search results, and it made a fairly compelling case for Hugo over Jekyll:
 
-```{r}
-knitr::include_graphics("/post/2019-01-10-2019-is-online_files/Hugo-vs-jekyll-basic-test-10k-pages-1.png")
-```
+![](/post/2019-01-10-2019-is-online_files/jekyllvshugo.png){width=100%}
+
+I don't think I'll be getting close to 10k posts any time soon, but becoming acquainted with a technology that seems to scale better seemed like the smarter choice.
+
+## First frustrations with Hugo
+
+So I went and downloaded Hugo. Given what I'd learned from the Jekyll tutorials, I thought getting started with Hugo would be just as simple. It wasn't. Thankfully, a footnote in Yihui's book reassured that it wasn't just me being dumb:
+
+>[One day I was almost ready to kill myself when I was trying to figure out how _index.md works by reading the documentation over and over again, and desperately searching on the Hugo forum.](https://bookdown.org/yihui/blogdown/a-quick-example.html#fn3)
+
+At the time I had the clarity of mind to keep a sort of diary with all my questions and explorations as I tried to understand Hugo, but then at some point I decided to overwrite the repo with the fresh code for this site. Shame on me. I remember it being mostly about me randomly deleting folders and files to see how things broke, though, so I'm sure there weren't any great insights that Yihui's book didn't already hold.
+
+But since I hadn't, at the time, thought of referencing that beautiful book, I just gave up and kicked the project down the road. If there's a lesson here, it's that I should first look at what has been written on a given subject before I end up trying to reinvent the wheel. I hope the lesson sticks this time, because I've done this several times over the years.
+
+## But we got there
+
+I finally found the time and energy to sit down and go through the book in early January 2019. As it turns out, the book is more like a short user manual and I had things up and running in no time. I'd seriously overestimated the complexity of it all... perhaps the word 'book' was conjuring images of the huge tomes on thermodynamics and mathematical physics I promised myself I'd read one day and still haven't. 
+
+Anyway, while getting things up and running is a matter of following simple instructions, customizing things isn't trivial. I decided to use the same theme from the [Simply Statistics](https://simplystatistics.org/) blog, called [Blackburn](https://themes.gohugo.io/blackburn/). Things I liked about it:
+
+* Wide text area. Other themes I liked were just too narrow and I felt like I had to scroll too often.
+
+* Simple collapsible side-panel menu. On personal computers, we always have a wider screen so I feel it just makes sense to put menus there instead of reducing the reading area by placing it at the top.
+
+* No look-at-me! homepage. Some themes, like [Academic](https://themes.gohugo.io/academic/), are designed to show off your face and achievements right away. I don't enjoy the former or have many of the latter, and as a visitor to other people's blogs, I found it a bit distracting and tedious as I had to go through some additional effort to get to their content.
+
+## Closing remarks
+
+I'm currently using the `blogdown::build_site()` command to build all the files to a separate repo that gets pushed to my personal Github site. This means that I need to run three commands to keep things updated: build the site, push to the website code repo and push to the actual website repo. Feels very inefficient and I'm sure someone has figured out a way to do this in a single step, so that's the next task I want to sort out for this blog (I tried using Netlify as per the book's recommendations, but it didn't seem to play nicely with `.Rmd` files outside of the `posts/` directory).
+
+One final thing: I put off finishing this post for about a week because I couldn't figure out how to make the bar chart image not show up in its full-sized glory, overflowing the text div. All I had to do was set its width to 100%, which apparently was very obvious to everone else on the planet, since I spent several days searching for solutions. I suppose this is a good complement to the other lesson learned: don't spend too much time looking for documented solutions when the possibilities for experimentation are limited and simple to try.
