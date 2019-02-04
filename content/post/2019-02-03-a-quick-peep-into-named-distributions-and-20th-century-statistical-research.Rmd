@@ -170,9 +170,13 @@ In this particular case, however, I feel that what could very well have been a p
 
 To be clear, only the recurrent application sections in that lineage of papers is what might deserve the "crappy" label. The rest of each of those articles seems to follow a reasonable if formulaic format for showing aspects of interest to mathematical statisticians, though it all mostly goes over my head.
 
-Precisely because of the effort that seemingly went into the rest of the work, it is quite likely that such a throwaway treatment of applications was the product of a particular academic praxis rather than straight up deceitful attempts at overinflating the significance of their work.
+Precisely because of the effort that seemingly went into the rest of the work, it is quite likely that such a throwaway treatment of applications was the product of a particular academic praxis rather than straight up deceitful attempts at overinflating the significance of their work^[I got the same vibes from professors at my school, but that's a topic for another post].
 
 ## Final remarks
+
+As of this post I still haven't found other applications where Tian's stochastic representations seem naturally applicable.
+
+I'm left with the impression that there isn't anything particularly interesting about Lindley's distribution other than its passing resemblance to the exponential. One of the authors cited tried to make a point of it being "more flexible" than the exponental because its moments behave differently, but that's just a different form of inflexibility as far as I can tell. Maybe Lindley's distribution is actually a super popular thing in some niche field, but I'm calling off that search for now.
 
 Overall, I feel that this has been a productive exploration. The differences between the concerns exhibited in those papers and the ones I've become used to reading (and caring about) has allowed me to better appreciate intra-field variation at a time where some seem to regard the whole of statistics as this one single thing you must be good at for certain jobs.
 
