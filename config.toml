@@ -1,61 +1,33 @@
-baseurl = "https://bmfazio.github.io/"
+baseurl = "/"
 languageCode = "en-us"
 title = "Boris Fazio"
-theme = "blackburn"
-author = "Yoshiharu Yamashita "
-copyright = "&copy; I have no clue what my rights are yet."
-canonifyurls = false
-paginate = 10
+theme = "hugo-xmin"
+googleAnalytics = ""
+disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
-publishDir = "../bmfazio.github.io"
+footnotereturnlinkcontents = "↩"
 
-[indexes]
-  tag = "tags"
-  topic = "topics"
+[permalinks]
+    post = "/post/:year/:month/:day/:slug/"
+    note = "/note/:year/:month/:day/:slug/"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+[[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+[[menu.main]]
+    name = "Resources"
+    url = "/resources/"
+    weight = 4
 
 [params]
-  # Shown in the home page
-  subtitle = "Proto-statistician / Chronic dabbler"
-  brand = "<>"
-  #googleAnalytics = "Your Google Analytics tracking ID"
-  #disqus = "Your Disqus shortname"
-  # CSS name for highlight.js
-  highlightjs = "androidstudio"
-  dateFormat = "02 Jan 2006"
-
-[menu]
-  # Shown in the side menu.
-  [[menu.main]]
-    name = "Home"
-    pre = "<i class='fa fa-home fa-fw'></i>"
-    weight = 1
-    identifier = "home"
-    url = "/"
-  [[menu.main]]
-    name = "About"
-    pre = "<i class='fa fa-user fa-fw'></i>"
-    weight = 2
-    identifier = "about"
-    url = "/about/"
-  [[menu.main]]
-    name = "Tags"
-    pre = "<i class='fa fa-tags fa-fw'></i>"
-    weight = 3
-    identifier = "tags"
-    url = "/tags/"
-  [[menu.main]]
-    name = "All posts"
-    pre = "<i class='fa fa-list fa-fw'></i>"
-    weight = 4
-    identifier = "post"
-    url = "/post/"
-
-[social]
-  # Link your social networking accouns to the side menu
-  # by entering your username or ID.
-  #twitter = "*"
-  #facebook = "*"
-  #instagram = "*"
-  github = "bmfazio"
-  #stackoverflow = "*"
-  #linkedin = "*"
+    description = "Personal website for Boris Fazio"
+    footer = ""
