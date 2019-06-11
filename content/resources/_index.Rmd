@@ -3,6 +3,12 @@ title: Resources
 layout: resources.md
 ---
 
-I need to figure out a way to throw folders inside the `/resource` folder and automatically list them here with some nice title. The main (and perhaps only) use I have in mind for this section is to list content I create via **bookdown**.
+A colllection of **bookdown** books I've made for content that wouldn't make for a good blogpost.
 
-`r paste0("<h2>",dir(paste0(blogdown:::site_root(),"/content/resources")),"</h2>")`
+## Math/Stats
+
+* Notes for Solomon's Linear Algebra textbook (pending)
+
+## Personal
+
+* [The Book of Notes](../books/the-notebook)

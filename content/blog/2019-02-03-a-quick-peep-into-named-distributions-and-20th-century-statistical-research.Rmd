@@ -3,8 +3,6 @@ title: A quick peep into named distributions and 20th century statistical resear
 author: Boris Fazio
 date: '2019-02-03'
 slug: a-quick-peep-into-named-distributions-and-20th-century-statistical-research
-categories:
-  - hmm
 tags:
   - statistics
 ---

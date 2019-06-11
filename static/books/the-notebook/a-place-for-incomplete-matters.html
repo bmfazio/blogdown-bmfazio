@@ -136,11 +136,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="bookdown-tools.html"><a href="bookdown-tools.html"><i class="fa fa-check"></i>Bookdown tools</a></li>
 <li class="chapter" data-level="" data-path="epibiostat-resources.html"><a href="epibiostat-resources.html"><i class="fa fa-check"></i>Epibiostat resources</a></li>
-<li class="chapter" data-level="" data-path="vidulls.html"><a href="vidulls.html"><i class="fa fa-check"></i>Vidulls</a><ul>
-<li class="chapter" data-level="1.7" data-path="vidulls.html"><a href="vidulls.html#creation-tools"><i class="fa fa-check"></i><b>1.7</b> Creation tools</a></li>
-<li class="chapter" data-level="1.8" data-path="vidulls.html"><a href="vidulls.html#egg-cooking-simulator"><i class="fa fa-check"></i><b>1.8</b> Egg cooking simulator</a></li>
-<li class="chapter" data-level="1.9" data-path="vidulls.html"><a href="vidulls.html#tile-trapper"><i class="fa fa-check"></i><b>1.9</b> Tile Trapper</a></li>
-<li class="chapter" data-level="1.10" data-path="vidulls.html"><a href="vidulls.html#run-on"><i class="fa fa-check"></i><b>1.10</b> Run-On</a></li>
+<li class="chapter" data-level="2" data-path="vidulls.html"><a href="vidulls.html"><i class="fa fa-check"></i><b>2</b> Vidulls</a><ul>
+<li class="chapter" data-level="2.1" data-path="vidulls.html"><a href="vidulls.html#creation-tools"><i class="fa fa-check"></i><b>2.1</b> Creation tools</a></li>
+<li class="chapter" data-level="2.2" data-path="vidulls.html"><a href="vidulls.html#egg-cooking-simulator"><i class="fa fa-check"></i><b>2.2</b> Egg cooking simulator</a></li>
+<li class="chapter" data-level="2.3" data-path="vidulls.html"><a href="vidulls.html#tile-trapper"><i class="fa fa-check"></i><b>2.3</b> Tile Trapper</a></li>
+<li class="chapter" data-level="2.4" data-path="vidulls.html"><a href="vidulls.html#run-on"><i class="fa fa-check"></i><b>2.4</b> Run-On</a></li>
 </ul></li>
 </ul>
 
@@ -256,6 +256,14 @@ blogdown<span class="op">::</span><span class="kw">new_site</span>(<span class="
 <p>My initial idea was to place the raw <strong>bookdown</strong> inputs into <code>content/resources/</code> and build those together with the site, but that’s actually probably a bad idea since I would have needed to figure out just how to do that and building the book is already something one does while editing it, so it’s not like it would save a massive amount of time.</p>
 <p>I decided to directly place the <strong>bookdown</strong> output in that same directory instead, but <strong>blogdown</strong> was only importing the <code>index.html</code> file and ignoring the rest of sections for some reason. Instead of figuring that one out, I discovered that the <code>static</code> folder is bundled as-is when the site builds.</p>
 <p>So that solved getting the books working with the rest of the site’s workflow. Further refinements that I’ve thought about are: automatically creating the list of books in the <em>Resources</em> section by using an R code block that looks at the stuff inside <code>static</code> as the site builds, and using symbolic links to a single <code>libs</code> folder that all the books share. The latter is highly unnecessary since the folder isn’t very big and I doubt I’ll ever have that many books that it becomes a problem, but it provided an opportunity to learn about symbolic links on <strong>Windows</strong> and their interaction with <strong>Git</strong>… testing whether they clone nicely into a Linux machine is pending (also, must figure out how to use <code>system</code> to automate that part of the process).</p>
+<p>Some code I’m working on to do the listing thing:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(rvest)
+
+blogdown<span class="op">:::</span><span class="kw">site_root</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">paste0</span>(<span class="st">&quot;/static/books&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">list.files</span>(<span class="dt">pattern =</span> <span class="st">&quot;^index.html&quot;</span>, <span class="dt">recursive =</span> T, <span class="dt">full.names =</span> T) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">sapply</span>(<span class="cf">function</span>(x)<span class="kw">read_html</span>(x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">html_nodes</span>(<span class="st">&quot;title&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">html_text</span>())</code></pre>
 </div>
 </div>
             </section>
