@@ -1,9 +1,10 @@
-baseurl = "/"
+baseurl = "https://bmfazio.github.io/"
 languageCode = "en-us"
 title = "Boris Fazio"
 theme = "hugo-xmin"
-googleAnalytics = ""
-disqusShortname = ""
+publishDir = "../bmfazio.github.io/"
+
+googleAnalytics = "UA-141885901-1"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 footnotereturnlinkcontents = "↩"
 
@@ -30,4 +31,4 @@ footnotereturnlinkcontents = "↩"
 
 [params]
     description = "Personal website for Boris Fazio"
-    footer = ""
+    footer = "Boris Fazio | [Github](https://github.com/bmfazio) | [Twitter](https://twitter.com/bmfazio)"

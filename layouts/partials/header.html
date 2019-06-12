@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
+	<link rel="icon" type="image/png" href="{{ .Site.BaseURL }}img/favicon.png"}}>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ .Title }} | {{ .Site.Title }}</title>
     <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
     <link rel="stylesheet" href="{{ "/css/fonts.css" | relURL }}" />
+	{{ template "_internal/google_analytics_async.html" . }}
     {{ partial "head_custom.html" . }}
   </head>
 

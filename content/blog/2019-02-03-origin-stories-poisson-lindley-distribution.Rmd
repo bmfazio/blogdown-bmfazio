@@ -1,0 +1,141 @@
+---
+title: 'Origin stories: Poisson-Lindley distribution'
+author: ''
+date: '2019-02-03'
+slug: origin-stories-poisson-lindley-distribution
+tags:
+  - statistics
+  - origin story
+layout: blogpost
+bibliography: [2019-02-03-origin-stories-poisson-lindley-distribution.bib]
+link-citations: true
+---
+
+```{r, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(kableExtra)
+kformat <- function(x, capt){
+  x %>%
+    kable("html", caption = capt, align=rep('r', 5)) %>%
+    column_spec(1:2, width = "10em") %>%
+    add_header_above(c(" " = 2, "Expected frequencies" = 3)) %>%
+    kable_styling(position = "center")
+}
+```
+
+You may find this post interesting if you've ever been reading a paper and noticed the author nonchalantly introducing some concept that just makes you go "where did THAT come from?" and felt the urge to recursively navigate references until you got an explanation for how such a thing came to be.
+
+## Some context
+
+During the lit review for my master's thesis, I was looking for some prior work on truncated distributions and found a paper by @ghitany2008zero. This is the abstract:
+
+> The zero-truncated Poisson–Lindley [ZPTL] distribution is introduced and investigated. In particular, the method of moments and maximum likelihood estimators of the distribution’s parameter are compared in small and large samples. **Application of the model to real data is given.**
+
+Emphasis mine. If you omit the text talking about the tables and the calculations for the hypothesis test, the application section is surprisingly brief:
+
+> Cullen et al. gave counts of sites with 1, 2, 3, 4 and 5 particles from immunogold assay data. The counts were 122, 50, 18, 4, 4.
+>
+>[...]
+>
+>We are interested in testing the null hypothesis H0: "Number of attached particles is a ZTPL random variable" versus the alternative hypothesis H1: "Number of attached particles is not a ZTPL random variable".
+>
+>[...]
+>
+>It follows that the null hypothesis H0 cannot be rejected; indeed, the close agreement between the observed and expected frequencies suggests that the ZTPL distribution provides a "good fit".
+
+I did not feel the authors were making a good case for the applicability of their model to real data in that section. A few reasons why:
+
+1. No attempt was made at establishing a connection between the data generating process and the proposed distribution.
+
+1. Using NHST on such a small dataset basically guarantees the null won't be rejected and using a null result to assert a conclusion is plain wrong.^[I have to write a post on this surprisingly common misconception regarding NHST]
+
+1. The model wasn't compared against an alternative, so we don't even know if ther model represents any improvement over previous practice.
+
+Still, I was intrigued by the so-called ZTPL distribution. Whenever there's a distribution named after someone, one can expect to find the original publication where it was first introduced, where a budding statistician (such as myself) might be lucky to find an example of subject matter knowledge and statistical thought coming together to create bespoke modeling solutions.
+
+I thought that perhaps the Ghitany paper had glossed over the application section because it was assumed that people who might care about the topic would already be familiar the distribution's relevance. Since I was already familiar with the Poisson distribution and zero truncation is a fairly straightforward modification, I decided to look into the "Lindley" part of the distribution next.
+
+## Following the trail
+
+It turned out there was a previous paper from that same year by @ghitany2008lindley which focused solely on the Lindley distribution. The abstract:
+
+>A treatment of the mathematical properties is provided for the Lindley distribution. The properties studied include: moments, cumulants, characteristic function, failure rate function, mean residual life function, mean deviations, Lorenz curve, stochastic ordering, entropies, asymptotic distribution of the extreme order statistics, distributions of sums, products and ratios, maximum likelihood estimation and simulation schemes. **An application to waiting time data at a bank is described.**
+
+Let's take a look at that application:
+
+>In this section, we use a real data set to show that the Lindley distribution can be a better model than one based on the exponential distribution. The data set given in Table 4 represents the waiting times (in minutes) before service of 100 bank customers.
+>
+>We fitted both the Lindley and exponential distributions to this data set. The method of maximum likelihood was used. We obtained the estimates $\theta = 0.187$ with $\text{S.E.}(\theta) = 0.013$ for the Lindley distribution and $\theta = 0.101$ with $\text{S.E.}(\theta) = 0.010$ for the exponential distribution. The maximized log-likelihoods for the two models were −319.0 and −329.0, respectively. Since the two models have the same number of parameters, it follows that the Lindley distribution provides the better fit.
+
+Things to note here:
+
+1. As opposed to the other paper, we have a comparison between the author's proposed distribution and a more established one.
+
+1. If you go to the table they mention in the text, it's just a 10x10 array of numbers, which the caption says represent waiting times of bank customers, but there's no further reference given for the origin of the data.
+
+1. Again, no attempt is made to justify the connection between the distribution of interest and the data being modeled, although there seems to be an implication that because it has a similar shape to the exponential^[Which does have a history of being used to model waiting times, with reasonable motivation for the choice, see [this question](https://math.stackexchange.com/questions/146293/why-do-we-always-assume-waiting-time-has-exponential-distribution) on StackExchange], it may also be suitable for the task.
+
+I was still not satisfied with the way the distribution was being used as a given without further explanation. While there were direct references to articles by Lindley himself in the paper above, the titles didn't really seem to focus on distributions, so I looked at the work by @sankaran1970275 next:
+
+> A compound Poisson distribution is obtained by compounding the Poisson distribution with one due to Lindley. Estimation of the parameter is discussed, examples are given of the fitting of this distribution to data, and the fit is compared with that obtained using other distributions.
+
+The article is pretty brief. The distribution and related formulas are presented in about one page, followed by two applications presented in tables which I transcribe here with the corresponding text:
+
+>We consider two examples of observed data for which the two-parameter Hermite and negative binomial distributions, respectively, have been fitted. Tables 1 and 2 give the comparison of observed and expected frequencies for these, the Poisson, and the Poisson-Lindley distributions. Maximum likelihood was used to fit the Hermite distribution, but moment estimates were used in fitting the negative binomial and the present distribution.
+>
+>The present single-parameter distribution appears to give a satisfactory fit in both cases, whereas the Poisson distribution does not. For the two sets of data, $\{d \log L/d\theta\}_{\theta*}$ has the values 0.05 and 0.07 respectively, the second derivative being negative when $\theta = \theta*$, indicating that the moment estimate $\theta*$ is close to the maximum likelihood estimate in both cases.
+
+```{r, echo = FALSE}
+tibble(
+  `No. of errors per group` = 0:4,
+  `Observed frequencies` = c(35, 11, 8, 4, 2),
+  `Poisson` = c(27.4, 21.5, 8.4, 2.2, 0.4),
+  `Hermite` = c(34.2, 11.7, 9.6, 2.8, 1.3),
+  `Poisson-Lindley` = c(33.0, 15.3, 6.8, 2.9, 1.2)
+) %>% 
+  kformat("Distribution of mistakes in copying groups of random digits. Data from Kemp and Kemp (1965).")
+```
+<br>
+```{r, echo = FALSE}
+tibble(
+  `No. of errors per group` = c(0:4, ">=5"),
+  `Observed frequencies` = c(447, 132, 42, 21, 3, 2),
+  `Poisson` = c(406, 189, 45, 7, 1, 0.1),
+  `Hermite` = c(442, 140, 45, 14, 5, 2),
+  `Poisson-Lindley` = c(441, 143, 45, 14, 4, 1)
+) %>%
+  kformat("Accidents to 647 women working on high explosive shells in 5 weeks. Data from Greenwood and Yule (1920) reported by Kendall and Stuart (1963, p. 129).")
+```
+
+Once again it, there is no in-depth explanation of why it would occur to someone to apply that distribution to the problems shown. It's also interesting to note that, while the Poisson fit performs the worst in both cases, the Hermite distribution is the one that seems to offer a generally better fit instead of the proposed Poisson-Lindley .
+
+At this point, I only had Lindley's work to fall back to. One of the references was a book volume, so I looked at the shorter @lindley1958fiducial paper first:
+
+>$x$ is a one-dimensional random variable whose distribution depedns on a single parameter $\theta$. It is the purpose of this note to establish two results:
+>
+>(i) The necessary and sufficient condition for the fiducial distribution of $\theta$, given $x$, to be a Bayes' distribution is that there exist transformations of $x$ to $u$, and of $\theta$ to $\tau$, such that $\tau$ is a location parameter for $u$. The condition will be referred to as (A). This extends some results of Grundy's (1956).
+>
+>(ii) If, for a random sample of any size from the distribution for $x$, there exists a single sufficient statistic for $\theta$ then the fiducial argument is inconsistent unless condition (A) obtains: and when it does, the fiducial argument is equivalent to a Bayesian argument with uniform prior distribution for $\tau$.
+>
+>The note concludes with an investigation of (A) in th case of the exponential family.
+
+I have a very superficial understanding of fiducial inference and the term "Bayes' distribution" tripped me up at first, but I believe Lindley's intention here was to show in a fairly general setting that the fiducial framework could be fully subsumed within a Bayesian one.
+
+In this specific context, *consistency* of the fiducial argument means that it should result in the same inference as that obtained through Bayesian means when the same information is provided to both methods. Lindley tells us that for that to be the case, a posterior distribution that takes prior information encoded in a sufficient statistic $x$ and updates it with data that has a sufficient statistic $y$ should be equal to the fiducial distribution produced given $x$ and $y$ as data.
+
+I did not read through the specifics, but what is purportedly shown in the end is that fiducial consistency is only obtained when a Bayesian would set up their priors in a certain specific way. Therefore, the implication here is that you could just be Bayesian and reach the same conclusions, with the added flexibility of being able to work with different priors if needed.
+
+In the process of showing the point above, Lindley gives an example of a distribution that leads to an inconsistency with the fiducial approach. Funny thing is that the distribution simply conjured on the spot, with a form explicitly chosen for simplicity. 
+
+What?!
+
+## So that's that
+
+I'll be honest, I'm somewhat amused that some arbitrary distribution Lindley came up with on the spot ended up spawning a lineage of publications spanning over half a century (there are more recent publications on it which I didn't include here). What I don't find quite as amusing is what I perceive as an unwarranted attempt at pushing a "real world" utility of that distribution.
+
+I don't want to get too preachy here, but it would seem like all of these authors (except for Lindley) saw an opportunity to increase their publication record by following some tacit, minimum-effort format in their academic niche. They definitely appear to have command of the necessary concepts and math tools to expound on the statistical properties of a distribution, but the throwaway nature of their application sections makes me feel like they weren't really interested in seeing if their work had any utility but were simply forced to go through the motions to appear like they were.
+
+Of course, I could be reading too much into things. I'm probably projecting some of my own experiences as a student who trusted too much in senior researchers who told me to do work on certain things whose pupose I never quite understood and that it would now seem were simply intended to push more publications citing their work. Trying to unpack this would need a post of itself, or more likely an entire book, so I'll leave it at that for the time being.
+
+## References

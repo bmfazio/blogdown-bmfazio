@@ -1,0 +1,370 @@
+---
+title: 'Origin stories: Poisson-Lindley distribution'
+author: ''
+date: '2019-02-03'
+slug: origin-stories-poisson-lindley-distribution
+tags:
+  - statistics
+  - origin story
+layout: blogpost
+bibliography: [2019-02-03-origin-stories-poisson-lindley-distribution.bib]
+link-citations: true
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>You may find this post interesting if you’ve ever been reading a paper and noticed the author nonchalantly introducing some concept that just makes you go “where did THAT come from?” and felt the urge to recursively navigate references until you got an explanation for how such a thing came to be.</p>
+<div id="some-context" class="section level2">
+<h2>Some context</h2>
+<p>During the lit review for my master’s thesis, I was looking for some prior work on truncated distributions and found a paper by <span class="citation">Ghitany, Al-Mutairi, and Nadarajah (<a href="#ref-ghitany2008zero">2008</a>)</span>. This is the abstract:</p>
+<blockquote>
+<p>The zero-truncated Poisson–Lindley [ZPTL] distribution is introduced and investigated. In particular, the method of moments and maximum likelihood estimators of the distribution’s parameter are compared in small and large samples. <strong>Application of the model to real data is given.</strong></p>
+</blockquote>
+<p>Emphasis mine. If you omit the text talking about the tables and the calculations for the hypothesis test, the application section is surprisingly brief:</p>
+<blockquote>
+<p>Cullen et al. gave counts of sites with 1, 2, 3, 4 and 5 particles from immunogold assay data. The counts were 122, 50, 18, 4, 4.</p>
+<p>[…]</p>
+<p>We are interested in testing the null hypothesis H0: “Number of attached particles is a ZTPL random variable” versus the alternative hypothesis H1: “Number of attached particles is not a ZTPL random variable”.</p>
+<p>[…]</p>
+<p>It follows that the null hypothesis H0 cannot be rejected; indeed, the close agreement between the observed and expected frequencies suggests that the ZTPL distribution provides a “good fit”.</p>
+</blockquote>
+<p>I did not feel the authors were making a good case for the applicability of their model to real data in that section. A few reasons why:</p>
+<ol style="list-style-type: decimal">
+<li><p>No attempt was made at establishing a connection between the data generating process and the proposed distribution.</p></li>
+<li><p>Using NHST on such a small dataset basically guarantees the null won’t be rejected and using a null result to assert a conclusion is plain wrong.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p></li>
+<li><p>The model wasn’t compared against an alternative, so we don’t even know if ther model represents any improvement over previous practice.</p></li>
+</ol>
+<p>Still, I was intrigued by the so-called ZTPL distribution. Whenever there’s a distribution named after someone, one can expect to find the original publication where it was first introduced, where a budding statistician (such as myself) might be lucky to find an example of subject matter knowledge and statistical thought coming together to create bespoke modeling solutions.</p>
+<p>I thought that perhaps the Ghitany paper had glossed over the application section because it was assumed that people who might care about the topic would already be familiar the distribution’s relevance. Since I was already familiar with the Poisson distribution and zero truncation is a fairly straightforward modification, I decided to look into the “Lindley” part of the distribution next.</p>
+</div>
+<div id="following-the-trail" class="section level2">
+<h2>Following the trail</h2>
+<p>It turned out there was a previous paper from that same year by <span class="citation">Ghitany, Atieh, and Nadarajah (<a href="#ref-ghitany2008lindley">2008</a>)</span> which focused solely on the Lindley distribution. The abstract:</p>
+<blockquote>
+<p>A treatment of the mathematical properties is provided for the Lindley distribution. The properties studied include: moments, cumulants, characteristic function, failure rate function, mean residual life function, mean deviations, Lorenz curve, stochastic ordering, entropies, asymptotic distribution of the extreme order statistics, distributions of sums, products and ratios, maximum likelihood estimation and simulation schemes. <strong>An application to waiting time data at a bank is described.</strong></p>
+</blockquote>
+<p>Let’s take a look at that application:</p>
+<blockquote>
+<p>In this section, we use a real data set to show that the Lindley distribution can be a better model than one based on the exponential distribution. The data set given in Table 4 represents the waiting times (in minutes) before service of 100 bank customers.</p>
+<p>We fitted both the Lindley and exponential distributions to this data set. The method of maximum likelihood was used. We obtained the estimates <span class="math inline">\(\theta = 0.187\)</span> with <span class="math inline">\(\text{S.E.}(\theta) = 0.013\)</span> for the Lindley distribution and <span class="math inline">\(\theta = 0.101\)</span> with <span class="math inline">\(\text{S.E.}(\theta) = 0.010\)</span> for the exponential distribution. The maximized log-likelihoods for the two models were −319.0 and −329.0, respectively. Since the two models have the same number of parameters, it follows that the Lindley distribution provides the better fit.</p>
+</blockquote>
+<p>Things to note here:</p>
+<ol style="list-style-type: decimal">
+<li><p>As opposed to the other paper, we have a comparison between the author’s proposed distribution and a more established one.</p></li>
+<li><p>If you go to the table they mention in the text, it’s just a 10x10 array of numbers, which the caption says represent waiting times of bank customers, but there’s no further reference given for the origin of the data.</p></li>
+<li><p>Again, no attempt is made to justify the connection between the distribution of interest and the data being modeled, although there seems to be an implication that because it has a similar shape to the exponential<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, it may also be suitable for the task.</p></li>
+</ol>
+<p>I was still not satisfied with the way the distribution was being used as a given without further explanation. While there were direct references to articles by Lindley himself in the paper above, the titles didn’t really seem to focus on distributions, so I looked at the work by <span class="citation">Sankaran (<a href="#ref-sankaran1970275">1970</a>)</span> next:</p>
+<blockquote>
+<p>A compound Poisson distribution is obtained by compounding the Poisson distribution with one due to Lindley. Estimation of the parameter is discussed, examples are given of the fitting of this distribution to data, and the fit is compared with that obtained using other distributions.</p>
+</blockquote>
+<p>The article is pretty brief. The distribution and related formulas are presented in about one page, followed by two applications presented in tables which I transcribe here with the corresponding text:</p>
+<blockquote>
+<p>We consider two examples of observed data for which the two-parameter Hermite and negative binomial distributions, respectively, have been fitted. Tables 1 and 2 give the comparison of observed and expected frequencies for these, the Poisson, and the Poisson-Lindley distributions. Maximum likelihood was used to fit the Hermite distribution, but moment estimates were used in fitting the negative binomial and the present distribution.</p>
+<p>The present single-parameter distribution appears to give a satisfactory fit in both cases, whereas the Poisson distribution does not. For the two sets of data, <span class="math inline">\(\{d \log L/d\theta\}_{\theta*}\)</span> has the values 0.05 and 0.07 respectively, the second derivative being negative when <span class="math inline">\(\theta = \theta*\)</span>, indicating that the moment estimate <span class="math inline">\(\theta*\)</span> is close to the maximum likelihood estimate in both cases.</p>
+</blockquote>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 1: </span>Distribution of mistakes in copying groups of random digits. Data from Kemp and Kemp (1965).
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="2">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Expected frequencies
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:right;">
+No. of errors per group
+</th>
+<th style="text-align:right;">
+Observed frequencies
+</th>
+<th style="text-align:right;">
+Poisson
+</th>
+<th style="text-align:right;">
+Hermite
+</th>
+<th style="text-align:right;">
+Poisson-Lindley
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;width: 10em; ">
+0
+</td>
+<td style="text-align:right;width: 10em; ">
+35
+</td>
+<td style="text-align:right;">
+27.4
+</td>
+<td style="text-align:right;">
+34.2
+</td>
+<td style="text-align:right;">
+33.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+1
+</td>
+<td style="text-align:right;width: 10em; ">
+11
+</td>
+<td style="text-align:right;">
+21.5
+</td>
+<td style="text-align:right;">
+11.7
+</td>
+<td style="text-align:right;">
+15.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+2
+</td>
+<td style="text-align:right;width: 10em; ">
+8
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+<td style="text-align:right;">
+9.6
+</td>
+<td style="text-align:right;">
+6.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+3
+</td>
+<td style="text-align:right;width: 10em; ">
+4
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+4
+</td>
+<td style="text-align:right;width: 10em; ">
+2
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-3">Table 2: </span>Accidents to 647 women working on high explosive shells in 5 weeks. Data from Greenwood and Yule (1920) reported by Kendall and Stuart (1963, p. 129).
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="2">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Expected frequencies
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:right;">
+No. of errors per group
+</th>
+<th style="text-align:right;">
+Observed frequencies
+</th>
+<th style="text-align:right;">
+Poisson
+</th>
+<th style="text-align:right;">
+Hermite
+</th>
+<th style="text-align:right;">
+Poisson-Lindley
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;width: 10em; ">
+0
+</td>
+<td style="text-align:right;width: 10em; ">
+447
+</td>
+<td style="text-align:right;">
+406.0
+</td>
+<td style="text-align:right;">
+442
+</td>
+<td style="text-align:right;">
+441
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+1
+</td>
+<td style="text-align:right;width: 10em; ">
+132
+</td>
+<td style="text-align:right;">
+189.0
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+143
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+2
+</td>
+<td style="text-align:right;width: 10em; ">
+42
+</td>
+<td style="text-align:right;">
+45.0
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+3
+</td>
+<td style="text-align:right;width: 10em; ">
+21
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+4
+</td>
+<td style="text-align:right;width: 10em; ">
+3
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;width: 10em; ">
+&gt;=5
+</td>
+<td style="text-align:right;width: 10em; ">
+2
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>Once again it, there is no in-depth explanation of why it would occur to someone to apply that distribution to the problems shown. It’s also interesting to note that, while the Poisson fit performs the worst in both cases, the Hermite distribution is the one that seems to offer a generally better fit instead of the proposed Poisson-Lindley .</p>
+<p>At this point, I only had Lindley’s work to fall back to. One of the references was a book volume, so I looked at the shorter <span class="citation">Lindley (<a href="#ref-lindley1958fiducial">1958</a>)</span> paper first:</p>
+<blockquote>
+<p><span class="math inline">\(x\)</span> is a one-dimensional random variable whose distribution depedns on a single parameter <span class="math inline">\(\theta\)</span>. It is the purpose of this note to establish two results:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>The necessary and sufficient condition for the fiducial distribution of <span class="math inline">\(\theta\)</span>, given <span class="math inline">\(x\)</span>, to be a Bayes’ distribution is that there exist transformations of <span class="math inline">\(x\)</span> to <span class="math inline">\(u\)</span>, and of <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\tau\)</span>, such that <span class="math inline">\(\tau\)</span> is a location parameter for <span class="math inline">\(u\)</span>. The condition will be referred to as (A). This extends some results of Grundy’s (1956).</p></li>
+<li><p>If, for a random sample of any size from the distribution for <span class="math inline">\(x\)</span>, there exists a single sufficient statistic for <span class="math inline">\(\theta\)</span> then the fiducial argument is inconsistent unless condition (A) obtains: and when it does, the fiducial argument is equivalent to a Bayesian argument with uniform prior distribution for <span class="math inline">\(\tau\)</span>.</p></li>
+</ol>
+<p>The note concludes with an investigation of (A) in th case of the exponential family.</p>
+</blockquote>
+<p>I have a very superficial understanding of fiducial inference and the term “Bayes’ distribution” tripped me up at first, but I believe Lindley’s intention here was to show in a fairly general setting that the fiducial framework could be fully subsumed within a Bayesian one.</p>
+<p>In this specific context, <em>consistency</em> of the fiducial argument means that it should result in the same inference as that obtained through Bayesian means when the same information is provided to both methods. Lindley tells us that for that to be the case, a posterior distribution that takes prior information encoded in a sufficient statistic <span class="math inline">\(x\)</span> and updates it with data that has a sufficient statistic <span class="math inline">\(y\)</span> should be equal to the fiducial distribution produced given <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> as data.</p>
+<p>I did not read through the specifics, but what is purportedly shown in the end is that fiducial consistency is only obtained when a Bayesian would set up their priors in a certain specific way. Therefore, the implication here is that you could just be Bayesian and reach the same conclusions, with the added flexibility of being able to work with different priors if needed.</p>
+<p>In the process of showing the point above, Lindley gives an example of a distribution that leads to an inconsistency with the fiducial approach. Funny thing is that the distribution simply conjured on the spot, with a form explicitly chosen for simplicity.</p>
+<p>What?!</p>
+</div>
+<div id="so-thats-that" class="section level2">
+<h2>So that’s that</h2>
+<p>I’ll be honest, I’m somewhat amused that some arbitrary distribution Lindley came up with on the spot ended up spawning a lineage of publications spanning over half a century (there are more recent publications on it which I didn’t include here). What I don’t find quite as amusing is what I perceive as an unwarranted attempt at pushing a “real world” utility of that distribution.</p>
+<p>I don’t want to get too preachy here, but it would seem like all of these authors (except for Lindley) saw an opportunity to increase their publication record by following some tacit, minimum-effort format in their academic niche. They definitely appear to have command of the necessary concepts and math tools to expound on the statistical properties of a distribution, but the throwaway nature of their application sections makes me feel like they weren’t really interested in seeing if their work had any utility but were simply forced to go through the motions to appear like they were.</p>
+<p>Of course, I could be reading too much into things. I’m probably projecting some of my own experiences as a student who trusted too much in senior researchers who told me to do work on certain things whose pupose I never quite understood and that it would now seem were simply intended to push more publications citing their work. Trying to unpack this would need a post of itself, or more likely an entire book, so I’ll leave it at that for the time being.</p>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-ghitany2008zero">
+<p>Ghitany, ME, Dhaifalla K Al-Mutairi, and S Nadarajah. 2008. “Zero-Truncated Poisson–Lindley Distribution and Its Application.” <em>Mathematics and Computers in Simulation</em> 79 (3): 279–87.</p>
+</div>
+<div id="ref-ghitany2008lindley">
+<p>Ghitany, ME, B Atieh, and S Nadarajah. 2008. “Lindley Distribution and Its Application.” <em>Mathematics and Computers in Simulation</em> 78 (4): 493–506.</p>
+</div>
+<div id="ref-lindley1958fiducial">
+<p>Lindley, Dennis V. 1958. “Fiducial Distributions and Bayes’ Theorem.” <em>Journal of the Royal Statistical Society. Series B (Methodological)</em>, 102–7.</p>
+</div>
+<div id="ref-sankaran1970275">
+<p>Sankaran, Munuswamy. 1970. “275. Note: The Discrete Poisson-Lindley Distribution.” <em>Biometrics</em>, 145–49.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>I have to write a post on this surprisingly common misconception regarding NHST<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Which does have a history of being used to model waiting times, with reasonable motivation for the choice, see <a href="https://math.stackexchange.com/questions/146293/why-do-we-always-assume-waiting-time-has-exponential-distribution">this question</a> on StackExchange<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>

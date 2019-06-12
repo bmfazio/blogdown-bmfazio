@@ -7,10 +7,4 @@ layout: welcome
 
 Hi! I created this site to help me organize and share content I find interesting.
 
-If you want to know more about me, check out my profile on [Twitter](https://twitter.com/bmfazio) or [LinkedIn](https://www.linkedin.com/in/bmfazio/).
-
-Pending:
-
-* Custom layout for blogposts with a footer that links to my social media and remove author from header (it's always me!)
-
-* Import posts from my old blog
+If you want to know more about me, you can look at my accounts on [Twitter](https://twitter.com/bmfazio), [Github](https://github.com/bmfazio) and [LinkedIn](https://www.linkedin.com/in/bmfazio/).

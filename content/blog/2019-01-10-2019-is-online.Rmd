@@ -1,10 +1,10 @@
 ---
 title: 2019 is online
-author: Boris Fazio
 date: '2019-01-10'
 slug: 2019-is-online
 tags:
   - hugo
+layout: blogpost
 ---
 
 I have been meaning to set up a personal blog for probably over a year now and I've finally found the time to do so. I probably could have done this a few months ago if I hadn't spent so much time agonizing over choosing between [Jekyll](https://jekyllrb.com/) and [Hugo](https://gohugo.io/), as well as finding the ideal theme.
@@ -21,7 +21,7 @@ Anyway, then came the very crucial issue of picking a theme. I probably spent mo
 
 Thankfully, [this article](https://forestry.io/blog/hugo-vs-jekyll-benchmark/) was one of the first search results, and it made a fairly compelling case for Hugo over Jekyll:
 
-![](/post/2019-01-10-2019-is-online_files/jekyllvshugo.png){width=100%}
+![](https://res.cloudinary.com/forestry-demo/image/fetch/c_limit,dpr_auto,f_auto,q_80,w_674/https://forestry.io/uploads/2018/01/hugo-vs-jekyll-basic-test-1.png){width=70%}
 
 I don't think I'll be getting close to 10k posts any time soon, but becoming acquainted with a technology that seems to scale better seemed like the smarter choice.
 
